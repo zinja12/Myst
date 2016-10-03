@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% from 'macros.html' import render_field %}
+{% block content %}
+<div class="container" id="heading" align="center">
+  <h2>Hello {% if current_user.is_authenticated %}{{ current_user.username }}{% endif %}!</h2>
+  <br>
+  <h2>Current Storage</h2>
+  <br><br>
+</div>
+<div class="container" id="file_content" align="left">
+  {% for entry in dbx.files_list_folder('').entries %}
+    {{ entry.name }}
+    <br>
+  {% endfor %}
+</div>
+{% endblock %}
